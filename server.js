@@ -11,7 +11,7 @@ const dashboardRoutes = require('./routes/dashboard');
 const app = express();
 
 const allowedOrigins = [
-  "https://employee-manager12.netlify.app/",
+  "https://employee-manager18.netlify.app",
   "http://localhost:5173"
 ];
 
