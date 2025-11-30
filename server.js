@@ -17,14 +17,21 @@ connectDB(process.env.MONGO_URI);
 app.use('/api/auth', authRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+const allowedOrigins = [
+  "https://employee-manager189.netlify.app",
+  "http://localhost:5173"
+];
+
 app.use(cors({
-  origin: [
-    "https://employee-manager189.netlify.app",
-    "http://localhost:5173"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin(origin, cb) {
+    if (!origin) return cb(null, true);
+    if (allowedOrigins.includes(origin)) return cb(null, true);
+    cb(new Error("Not allowed by CORS"));
+  },
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
   credentials: true
 }));
+
 
 
 const PORT = process.env.PORT || 5000;
