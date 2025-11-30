@@ -18,7 +18,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://employee-manager18.netlify.app/",
   credentials: true
 }));
 
